@@ -1,27 +1,22 @@
 {
-  "name": "Latitude Shine Club",
-  "short_name": "LS Club",
-  "description": "Club de beneficios Latitude Shine — acumulá puntos con cada compra",
-  "start_url": "/",
+  "name": "Latitude Shine",
+  "short_name": "Latitude Shine",
+  "description": "Latitude Shine Club App",
+  "start_url": "/Latitudeshine/",
+  "scope": "/Latitudeshine/",
   "display": "standalone",
-  "background_color": "#04080f",
-  "theme_color": "#04080f",
   "orientation": "portrait",
-  "icons": [
-    {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "categories": ["lifestyle", "shopping"],
+  "background_color": "#0d2b6e",
+  "theme_color": "#0d2b6e",
   "lang": "es",
-  "screenshots": []
+  "icons": [
+    { "src": "icon-72x72.png", "sizes": "72x72", "type": "image/png" },
+    { "src": "icon-96x96.png", "sizes": "96x96", "type": "image/png" },
+    { "src": "icon-128x128.png", "sizes": "128x128", "type": "image/png" },
+    { "src": "icon-144x144.png", "sizes": "144x144", "type": "image/png" },
+    { "src": "icon-152x152.png", "sizes": "152x152", "type": "image/png" },
+    { "src": "icon-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-384x384.png", "sizes": "384x384", "type": "image/png" },
+    { "src": "icon-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
 }
