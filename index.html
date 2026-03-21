@@ -13,11 +13,11 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root {
---bg2: #0d1117;
---bg: #080c12;
---card: #111827;
---card2: #0d1525;
---border: #1a1f2a;
+--bg2: #111111;
+--bg: #0a0a0a;
+--card: #1a1a1a;
+  --card2: #222222;
+  --border: #2a2a2a;
   --border2: #333333;
   --blue: #1d6fe0;
   --blue2: #3b8ef5;
@@ -305,8 +305,10 @@ body{font-family:'DM Sans',sans-serif;color:var(--white);display:flex;flex-direc
 .ph-avatar{width:32px;height:32px;border-radius:50%;background:var(--blue-dim);border:1px solid var(--blue);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--blue2);}
 
 /* HERO */
-.hero{margin:10px 10px 0;border-radius:18px;padding:14px;position:relative;overflow:hidden;}.hero::before{content:'';position:absolute;inset:-1px;border-radius:19px;background:linear-gradient(135deg,#3b8ef5,#0d2050,#00b4d8,#1a3a6b,#7ab8ff,#0d1a3a,#3b8ef5);z-index:0;}.hero-grid{display:none;}.hero-glow{display:none;}
-.hero-inner{position:relative;z-index:3;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+.hero{position:relative;padding:28px 20px 70px;overflow:hidden;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:30px 30px;opacity:.4;}
+.hero-glow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:300px;height:300px;background:radial-gradient(circle,#1d6fe018 0%,transparent 70%);pointer-events:none;}
+.hero-inner{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
 .hero-left{}
 .hero-pts-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted3);margin-bottom:4px;}
 .hero-pts{font-family:'Bebas Neue',sans-serif;font-size:64px;color:var(--white);line-height:1;letter-spacing:1px;}
@@ -415,13 +417,44 @@ body{font-family:'DM Sans',sans-serif;color:var(--white);display:flex;flex-direc
 .card-socio-num{font-size:9px;letter-spacing:1px;color:rgba(255,255,255,.3);margin-top:2px;}
 
 /* STATS ROW */
-.stats-row{display:flex;gap:6px;padding:0 10px 10px;}
-.stat-box{flex:1;background:#0d1117;border-radius:10px;padding:8px 10px;text-align:center;position:relative;overflow:visible;}.stat-box::before{content:'';position:absolute;inset:-1px;border-radius:11px;background:linear-gradient(135deg,#c0cce0,#4a5a70,#e8f0ff,#3a4a60,#c0cce0);z-index:-1;}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 20px;margin-bottom:12px;}
+.saldo-row{display:flex;gap:8px;padding:0 20px;margin-bottom:16px;}
+.saldo-chip{flex:1;background:var(--card);border-radius:8px;padding:7px 11px;display:flex;justify-content:space-between;align-items:center;}
+.saldo-chip.chip-green{border:0.5px solid #22c55e33;}
+.saldo-chip.chip-red{border:0.5px solid #ef444433;}
+.saldo-chip-lbl{font-size:10px;color:var(--muted3);}
+.saldo-chip-val{font-size:13px;font-weight:500;}
+.saldo-chip.chip-green .saldo-chip-val{color:var(--green);}
+.saldo-chip.chip-red .saldo-chip-val{color:var(--red);}
+.comprar-header{padding:12px 20px 8px;background:var(--bg);}
+.comprar-search{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:10px;}
+.comprar-search input{background:none;border:none;color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;width:100%;}
+.comprar-search input::placeholder{color:var(--muted);}
+.comprar-cats{display:flex;gap:7px;overflow-x:auto;padding-bottom:2px;}
+.comprar-cats::-webkit-scrollbar{display:none;}
+.cat-chip{flex-shrink:0;padding:5px 14px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid var(--border2);background:none;color:var(--muted3);font-family:'DM Sans',sans-serif;transition:all .2s;}
+.cat-chip.active{background:var(--blue-dim);border-color:var(--blue);color:var(--blue2);}
+.comprar-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 20px 100px;}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .15s;}
+.prod-card:active{border-color:var(--blue);}
+.prod-card-img{width:100%;height:110px;object-fit:cover;}
+.prod-card-noimag{width:100%;height:110px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:36px;}
+.prod-card-body{padding:9px 11px 11px;}
+.prod-card-cat{font-size:9px;color:var(--muted3);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
+.prod-card-nom{font-size:12px;font-weight:500;color:var(--white);margin-bottom:2px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prod-card-precio{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--green);margin-bottom:7px;}
+.prod-card-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:6px;padding:7px 6px;font-size:11px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;}
+.prod-card-btn:active{opacity:.85;}
+.bn-item-comprar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:5px 0;border:none;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.bn-comprar-pill{background:var(--blue);border-radius:12px;padding:5px 10px;display:flex;flex-direction:column;align-items:center;gap:1px;min-width:52px;}
+.bn-comprar-pill .bn-ico{font-size:15px;}
+.bn-comprar-lbl{font-size:10px;color:#fff;font-weight:500;letter-spacing:.3px;}
+.stat-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;text-align:center;}
 .stat-num{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--blue2);line-height:1;}
 .stat-lbl{font-size:10px;color:var(--muted3);margin-top:2px;letter-spacing:.5px;}
 
 /* TABS */
-.tab-bar{display:flex;background:#0d1117;border-top:1px solid #1a1f2a;border-bottom:1px solid var(--border);overflow-x:auto;margin-bottom:0;}
+.tab-bar{display:flex;background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow-x:auto;margin-bottom:0;}
 .tab-bar::-webkit-scrollbar{display:none;}
 .tab-btn{flex-shrink:0;padding:12px 16px;background:none;border:none;color:var(--muted2);font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;display:flex;align-items:center;gap:5px;}
 .tab-btn.active{color:var(--blue2);border-bottom-color:var(--blue2);}
@@ -778,7 +811,6 @@ body{font-family:'DM Sans',sans-serif;color:var(--white);display:flex;flex-direc
   </div>
 
   <div class="hero">
-    <div style="position:absolute;inset:1px;border-radius:17px;background:linear-gradient(145deg,#0d1f3c,#1a3a6b,#0d2d55);z-index:0;"></div>
     <div class="hero-grid"></div>
     <div class="hero-glow"></div>
     <div class="hero-inner">
@@ -841,6 +873,16 @@ body{font-family:'DM Sans',sans-serif;color:var(--white);display:flex;flex-direc
     <div class="stat-box"><div class="stat-num" id="st-compras">0</div><div class="stat-lbl">Compras</div></div>
     <div class="stat-box"><div class="stat-num" id="st-dias">0</div><div class="stat-lbl">Días socio</div></div>
   </div>
+  <div class="saldo-row">
+    <div class="saldo-chip chip-green">
+      <span class="saldo-chip-lbl">💳 Saldo</span>
+      <span class="saldo-chip-val" id="chip-saldo">$0</span>
+    </div>
+    <div class="saldo-chip chip-red">
+      <span class="saldo-chip-lbl">⚠️ Deuda</span>
+      <span class="saldo-chip-val" id="chip-deuda">$0</span>
+    </div>
+  </div>
 
   <div class="tab-bar">
     <button class="tab-btn active" onclick="setTab('inicio',this)"><span class="ti">⭐</span>Inicio</button>
@@ -871,17 +913,11 @@ body{font-family:'DM Sans',sans-serif;color:var(--white);display:flex;flex-direc
 
   <!-- INICIO -->
   <div class="tab-content active" id="tab-inicio">
- <div style="display:flex;gap:6px;padding:7px 10px 0;"><div style="flex:1;border-radius:11px;padding:7px 10px;background:#0d1117;position:relative;border:1px solid transparent;overflow:visible;"><div style="position:absolute;inset:-1px;border-radius:11px;background:linear-gradient(135deg,#22c55e,#0a3a1a,#6eeaa0,#0a2a14,#22c55e);z-index:-1;"></div><div style="font-size:7px;text-transform:uppercase;color:#4a7a5a;letter-spacing:.5px;">Puntos</div><div style="font-size:13px;font-weight:700;color:#22c55e;margin-top:2px;" id="home-saldo">—</div></div><div style="flex:1;border-radius:11px;padding:7px 10px;background:#0d1117;position:relative;border:1px solid transparent;overflow:visible;"><div style="position:absolute;inset:-1px;border-radius:11px;background:linear-gradient(135deg,#ef4444,#3a0a0a,#ff8888,#2a0505,#ef4444);z-index:-1;"></div><div style="font-size:7px;text-transform:uppercase;color:#6a3a3a;letter-spacing:.5px;">Canjes</div><div style="font-size:13px;font-weight:700;color:#ef4444;margin-top:2px;" id="home-deuda">—</div></div></div>
-    <div style="padding:7px 10px 0;"><div style="border-radius:14px;position:relative;height:68px;overflow:hidden;"><div style="position:absolute;inset:-1px;border-radius:15px;background:linear-gradient(135deg,#4a9aff,#1a2a60,#00b4d8,#0a2040,#4a9aff);z-index:0;"></div><div style="position:absolute;inset:1px;border-radius:13px;background:linear-gradient(135deg,#0d1f40,#1a3870);z-index:0;"></div><div style="position:absolute;inset:0;z-index:2;display:flex;align-items:center;padding:0 12px;gap:10px;"><div style="font-size:22px;" id="ban-ico">🚗</div><div style="flex:1;"><div style="font-size:7px;color:rgba(255,255,255,.5);text-transform:uppercase;" id="ban-tag">Promocion especial</div><div style="font-size:11px;font-weight:700;color:#fff;" id="ban-tit">Doble puntos hoy</div><div style="font-size:8px;color:rgba(255,255,255,.5);" id="ban-sub">En todos los lavados</div></div><div style="text-align:right;"><div style="font-size:18px;font-weight:700;color:#fff;" id="ban-val">x2</div></div></div></div></div>
-    <div style="display:flex;justify-content:space-between;padding:8px 10px 4px;"><div style="font-size:9px;font-weight:700;color:#4a6a88;text-transform:uppercase;">Ofertas</div><div style="font-size:8px;color:#1d6fe0;cursor:pointer;" onclick="setTab('ofertas',document.querySelector('[onclick*=ofertas]'))">Ver todas</div></div>
-    <div style="display:flex;gap:7px;padding:0 10px 7px;overflow-x:auto;" id="home-ofertas"><div style="color:#3a5a78;font-size:11px;">Sin ofertas</div></div>
-    <div style="padding:0 10px 7px;display:none;" id="home-game-wrap"><div style="border-radius:13px;padding:10px;display:flex;align-items:center;gap:9px;background:#0d1117;position:relative;border:1px solid transparent;"><div style="position:absolute;inset:-1px;border-radius:14px;background:linear-gradient(135deg,#c8a84b,#3a2a00,#f0d060,#6a4a10,#c8a84b);z-index:-1;"></div><div style="flex:1;"><div style="font-size:9px;font-weight:700;color:#f0d060;" id="home-game-t">Segui acumulando</div><div style="font-size:7px;color:#8a6a30;" id="home-game-s">Vas por buen camino</div><div style="height:3px;background:#2a1a00;border-radius:2px;margin-top:5px;"><div style="height:100%;background:linear-gradient(90deg,#c8a84b,#f0d060);border-radius:2px;width:0%;" id="home-game-f"></div></div></div><div style="background:#f59e0b18;border:1px solid #f59e0b44;border-radius:6px;padding:2px 6px;font-size:7px;color:#f59e0b;font-weight:700;" id="home-game-pct">0%</div></div></div>
-    <div style="padding:7px 10px 4px;font-size:9px;font-weight:700;color:#4a6a88;text-transform:uppercase;">Accesos</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0 10px 7px;"><div style="border-radius:12px;padding:9px 10px;background:#0d1117;cursor:pointer;position:relative;border:1px solid transparent;overflow:visible;" onclick="setTab('historial',document.querySelector('[onclick*=historial]'))"><div style="position:absolute;inset:-1px;border-radius:13px;background:linear-gradient(135deg,#4a9aff,#1d3a70,#7ab8ff,#1a2a50,#4a9aff);z-index:-1;"></div><div style="font-size:8px;color:#c0d8f0;font-weight:600;">Historial</div><div style="font-size:7px;color:#3a5a78;">Movimientos</div></div><div style="border-radius:12px;padding:9px 10px;background:#0d1117;cursor:pointer;position:relative;border:1px solid transparent;overflow:visible;" onclick="setTab('tienda',document.querySelector('[onclick*=tienda]'))"><div style="position:absolute;inset:-1px;border-radius:13px;background:linear-gradient(135deg,#48cae4,#0a4a60,#90e0ef,#0a3a50,#48cae4);z-index:-1;"></div><div style="font-size:8px;color:#c0d8f0;font-weight:600;">Catalogo</div><div style="font-size:7px;color:#3a5a78;">Servicios</div></div><div style="border-radius:12px;padding:9px 10px;background:#0d1117;cursor:pointer;position:relative;border:1px solid transparent;overflow:visible;" onclick="setTab('calc',document.querySelector('[onclick*=calc]'))"><div style="position:absolute;inset:-1px;border-radius:13px;background:linear-gradient(135deg,#c8a84b,#6a4a10,#f0d060,#8a6020,#c8a84b);z-index:-1;"></div><div style="font-size:8px;color:#c0d8f0;font-weight:600;">Calculadora</div><div style="font-size:7px;color:#3a5a78;">Simular puntos</div></div><div style="border-radius:12px;padding:9px 10px;background:#0d1117;cursor:pointer;position:relative;border:1px solid transparent;overflow:visible;" onclick="setTab('referidos',document.querySelector('[onclick*=referidos]'))"><div style="position:absolute;inset:-1px;border-radius:13px;background:linear-gradient(135deg,#22c55e,#0a3a1a,#6eeaa0,#0a2a14,#22c55e);z-index:-1;"></div><div style="font-size:8px;color:#c0d8f0;font-weight:600;">Referidos</div><div style="font-size:7px;color:#3a5a78;">Invita amigos</div></div></div>
-    <div style="display:flex;justify-content:space-between;padding:7px 10px 4px;"><div style="font-size:9px;font-weight:700;color:#4a6a88;text-transform:uppercase;">Premios</div><div style="font-size:8px;color:#1d6fe0;cursor:pointer;" onclick="setTab('premios',document.querySelector('[onclick*=premios]'))">Ver todos</div></div>
-    <div style="display:flex;gap:7px;padding:0 10px 7px;overflow-x:auto;" id="home-premios"><div style="color:#3a5a78;font-size:11px;">Cargando...</div></div>
-    <div style="display:flex;justify-content:space-between;padding:7px 10px 4px;"><div style="font-size:9px;font-weight:700;color:#4a6a88;text-transform:uppercase;">Recientes</div><div style="font-size:8px;color:#1d6fe0;cursor:pointer;" onclick="setTab('historial',document.querySelector('[onclick*=historial]'))">Ver todo</div></div>
-    <div style="display:flex;flex-direction:column;gap:5px;padding:0 10px 12px;" id="home-hist"><div style="color:#3a5a78;font-size:11px;">Cargando...</div></div>
+    <div class="sec">
+      <div class="sec-header"><div class="sec-tit">Tu <span>progreso</span></div><div class="sec-sub">Nivel actual y camino al siguiente</div></div>
+      <div class="prog-card" id="prog-card"></div>
+      <div class="niveles-chips" id="niveles-chips"></div>
+    </div>
   </div>
 
   <!-- CALC -->
@@ -1009,12 +1045,22 @@ body{font-family:'DM Sans',sans-serif;color:var(--white);display:flex;flex-direc
     </div>
   </div>
 
+  <div class="tab-content" id="tab-comprar">
+    <div class="comprar-header">
+      <div class="comprar-search"><span>🔍</span><input type="text" id="comprar-q" placeholder="Buscar productos…" oninput="renderComprar()"></div>
+      <div class="comprar-cats" id="comprar-cats"></div>
+    </div>
+    <div class="comprar-grid" id="comprar-grid"></div>
+  </div>
+
   <button class="logout-btn" onclick="logout()">← Cerrar sesión</button>
 
   <div class="bottom-nav">
     <div class="bn-inner">
       <button class="bn-item active" onclick="setTab('inicio',this);swBnav(this)"><span class="bn-ico">⭐</span>Inicio</button>
-      <button class="bn-item" onclick="setTab('tienda',this);swBnav(this)"><span class="bn-ico">🛍️</span>Tienda</button>
+      <button class="bn-item-comprar" onclick="setTab('comprar',document.querySelector('.bn-item-comprar'));swBnavComprar()">
+        <div class="bn-comprar-pill"><span class="bn-ico">🛒</span><span class="bn-comprar-lbl">Comprar</span></div>
+      </button>
       <button class="bn-item" onclick="setTab('premios',this);swBnav(this)"><span class="bn-ico">🎁</span>Premios</button>
       <button class="bn-item" onclick="setTab('ofertas',this);swBnav(this)"><span class="bn-ico">🔥</span>Ofertas</button>
       <button class="bn-item" onclick="setTab('chat',this);swBnav(this)"><span class="bn-ico">💬</span>Chat</button>
@@ -1065,16 +1111,12 @@ function updateOb(){
 
 // INIT
 async function init(){
-  var avanzado=false;
-  function avanzar(){if(avanzado)return;avanzado=true;var seen=localStorage.getItem('ls_ob_seen');show(seen?'login':'onboarding');if(!seen)localStorage.setItem('ls_ob_seen','1');}
-  var fb=setTimeout(avanzar,3000);
-  try{
-    var r1=await sb.from('config').select('*').eq('id','main').single();
-    if(r1.data&&r1.data.valor){var v=r1.data.valor;if(v.niveles)niveles=v.niveles;cfgRatio=v.ratio||10;cfgFijos=v.fijos||0;ofertas=v.ofertas||[];}
-    var r2=await sb.from('premios').select('*').order('puntos');
-    premios=r2.data||[];
-  }catch(e){console.warn('init error:',e);}
-  clearTimeout(fb);avanzar();
+  const {data}=await sb.from('config').select('*').eq('id','main').single();
+  if(data?.valor){if(data.valor.niveles)niveles=data.valor.niveles;cfgRatio=data.valor.ratio||10;cfgFijos=data.valor.fijos||0;ofertas=data.valor.ofertas||[];}
+  const {data:pr}=await sb.from('premios').select('*').order('puntos');
+  premios=pr||[];
+  const seen=localStorage.getItem('ls_ob_seen');
+  setTimeout(()=>{show(seen?'login':'onboarding');if(!seen)localStorage.setItem('ls_ob_seen','1');},1500);
 }
 
 // ENTRAR
@@ -1123,11 +1165,11 @@ async function renderPerfil(){
 
   // Header
   document.getElementById('ph-socio').textContent='SOCIO #'+socioNum;
-  document.getElementById('ph-avatar').textContent=((cliente.nombre||'S').trim()[0]||'S').toUpperCase();
+  document.getElementById('ph-avatar').textContent=cliente.nombre.trim()[0].toUpperCase();
 
   // Hero
   animarNum('hero-pts',0,pts,900);
-  document.getElementById('hero-nombre').innerHTML='Bienvenido, <strong>'+((cliente.nombre||'Socio').split(' ')[0]||'Socio')+'</strong>';
+  document.getElementById('hero-nombre').innerHTML=`Bienvenido, <strong>${cliente.nombre.split(' ')[0]}</strong>`;
   document.getElementById('hero-nivel-badge').innerHTML=`<span class="nivel-badge-ico">${vip?'👑':nivelIco(niv.nombre)}</span><span class="nivel-badge-txt" style="color:${color}">${vip?'VIP':niv.nombre}</span>`;
   document.getElementById('hero-since').textContent=`Socio desde ${cliente.fecha_alta||'—'}`;
 
@@ -1144,7 +1186,7 @@ async function renderPerfil(){
   const numBlocks = ['#'+socioNum, '••••', '••••', (cliente.tel||'').replace(/\D/g,'').slice(-4)||'••••'];
   document.getElementById('card-num').innerHTML = numBlocks.map(b=>`<span>${b}</span>`).join('');
   document.getElementById('card-pts').textContent=pts.toLocaleString();
-  document.getElementById('card-holder-name').textContent=(cliente.nombre||'SOCIO').toUpperCase().slice(0,22);
+  document.getElementById('card-holder-name').textContent=cliente.nombre.toUpperCase().slice(0,22);
   document.getElementById('card-holder-since').textContent='SOCIO DESDE '+(cliente.fecha_alta||'—');
   document.getElementById('card-socio-num').textContent='N.° '+socioNum;
 
@@ -1152,6 +1194,7 @@ async function renderPerfil(){
   document.getElementById('st-pts').textContent=pts.toLocaleString();
   document.getElementById('st-compras').textContent=compras;
   document.getElementById('st-dias').textContent=diasDesde(cliente.fecha_alta);
+  actualizarSaldoChips();
 
   // Progreso
   const pct=nivSig?Math.min(100,Math.round((pts/nivSig.puntos)*100)):100;
@@ -1431,11 +1474,56 @@ function iniciarRealtimeCliente(){
 function setTab(t,btn){
   document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+t).classList.add('active');
+  const el=document.getElementById('tab-'+t);if(el)el.classList.add('active');
   if(btn)btn.classList.add('active');
   if(t==='tienda')renderTienda();
+  if(t==='comprar'){if(!window._tiendaProds)renderTienda().then(()=>renderComprar());else renderComprar();}
 }
 function swBnav(btn){document.querySelectorAll('.bn-item').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+function swBnavComprar(){document.querySelectorAll('.bn-item').forEach(b=>b.classList.remove('active'));}
+function actualizarSaldoChips(){
+  const s=cliente?.saldo||0;
+  const d=cliente?.deuda||0;
+  const cs=document.getElementById('chip-saldo');
+  const cd=document.getElementById('chip-deuda');
+  if(cs)cs.textContent='$'+Number(s).toLocaleString('es-AR');
+  if(cd)cd.textContent='$'+Number(d).toLocaleString('es-AR');
+}
+let _comprarCat='Todos';
+function renderComprar(){
+  const prods=window._tiendaProds||[];
+  const q=(document.getElementById('comprar-q')?.value||'').toLowerCase();
+  // categorias
+  const cats=['Todos',...new Set(prods.map(p=>p.categoria||'General').filter(Boolean))];
+  const catsEl=document.getElementById('comprar-cats');
+  if(catsEl&&catsEl.childElementCount!==cats.length){
+    catsEl.innerHTML='';
+    cats.forEach(c=>{
+      const btn=document.createElement('button');
+      btn.className='cat-chip'+(c===_comprarCat?' active':'');
+      btn.textContent=c;
+      btn.onclick=()=>{_comprarCat=c;document.querySelectorAll('.cat-chip').forEach(x=>x.classList.remove('active'));btn.classList.add('active');renderComprar();};
+      catsEl.appendChild(btn);
+    });
+  }
+  // filtrar
+  let lista=prods;
+  if(_comprarCat!=='Todos')lista=lista.filter(p=>(p.categoria||'General')===_comprarCat);
+  if(q)lista=lista.filter(p=>(p.nombre||'').toLowerCase().includes(q)||(p.descripcion||'').toLowerCase().includes(q));
+  const grid=document.getElementById('comprar-grid');
+  if(!grid)return;
+  if(!lista.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted3)"><div style="font-size:36px;margin-bottom:10px">🔍</div>Sin resultados</div>';return;}
+  grid.innerHTML='';
+  lista.forEach(p=>{
+    const card=document.createElement('div');
+    card.className='prod-card';
+    const img=p.imagen_url?`<img class="prod-card-img" src="${p.imagen_url}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`:'';
+    const noimg=`<div class="prod-card-noimag" style="${p.imagen_url?'display:none':''}">🛒</div>`;
+    card.innerHTML=`${img}${noimg}<div class="prod-card-body"><div class="prod-card-cat">${p.categoria||'General'}</div><div class="prod-card-nom">${p.nombre||''}</div><div class="prod-card-precio">$${Number(p.precio||0).toLocaleString('es-AR')}</div><button class="prod-card-btn">Pedir</button></div>`;
+    card.querySelector('.prod-card-btn').onclick=()=>agregarAlCarrito(p.id);
+    grid.appendChild(card);
+  });
+}
 function logout(){try{sb.removeAllChannels();}catch(e){}realtimeActivo=false;cliente=null;tiendaCargada=false;document.getElementById('tel-input').value='';setTab('inicio',document.querySelector('.tab-btn'));document.querySelector('.bn-item').classList.add('active');show('login');}
 function animarNum(id,a,b,d){const el=document.getElementById(id);if(!el)return;const s=performance.now();(function f(t){const p=Math.min((t-s)/d,1);const e=1-Math.pow(1-p,3);el.textContent=Math.round(a+(b-a)*e).toLocaleString();if(p<1)requestAnimationFrame(f);})(s);}
 
