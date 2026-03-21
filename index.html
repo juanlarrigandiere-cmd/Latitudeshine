@@ -305,8 +305,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--white);display:flex;flex-direc
 .ph-avatar{width:32px;height:32px;border-radius:50%;background:var(--blue-dim);border:1px solid var(--blue);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--blue2);}
 
 /* HERO */
-.hero{position:relative;padding:28px 20px 70px;overflow:hidden;}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:30px 30px;opacity:.4;}
+.hero{margin:10px 10px 0;border-radius:18px;padding:14px;position:relative;overflow:hidden;}.hero::before{content:'';position:absolute;inset:-1px;border-radius:19px;background:linear-gradient(135deg,#3b8ef5,#0d2050,#00b4d8,#1a3a6b,#7ab8ff,#0d1a3a,#3b8ef5);z-index:0;}.hero-grid{display:none;}.hero-glow{display:none;}
 .hero-glow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:300px;height:300px;background:radial-gradient(circle,#1d6fe018 0%,transparent 70%);pointer-events:none;}
 .hero-inner{position:relative;z-index:3;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
 .hero-left{}
