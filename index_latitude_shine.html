@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Latitude Shine - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root{
+      --home-bg:#080c14;
+      --home-bg-soft:#0a0e16;
+
+      --home-card:#0f1825;
+      --home-card-2:#0c1420;
+      --home-border:#1c2a3a;
+
+      --home-primary:#3b8fe8;
+      --home-primary-dark:#1d6fe0;
+      --home-primary-soft:rgba(59,143,232,0.15);
+
+      --home-accent:#c9a96e;
+      --home-accent-soft:#e8c98a;
+
+      --home-text:#ffffff;
+      --home-text-soft:rgba(255,255,255,0.75);
+      --home-text-muted:rgba(255,255,255,0.45);
+
+      --home-radius:14px;
+    }
+
+    body{
+      margin:0;
+      font-family:sans-serif;
+      background:var(--home-bg);
+      color:var(--home-text);
+    }
+
+    .top-bar{
+      padding:12px;
+      background:rgba(10,14,22,0.92);
+      border-bottom:1px solid var(--home-border);
+      text-align:center;
+      font-weight:bold;
+    }
+
+    .container{
+      padding:14px;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg,var(--home-card),var(--home-bg-soft));
+      padding:20px;
+      border-radius:var(--home-radius);
+      margin-bottom:16px;
+    }
+
+    .oferta-box{
+      background:var(--home-card);
+      border-radius:var(--home-radius);
+      border:1.5px solid var(--home-primary);
+      overflow:hidden;
+      margin-bottom:16px;
+    }
+
+    .oferta-header{
+      background:linear-gradient(90deg,var(--home-primary),var(--home-primary-dark));
+      padding:10px;
+      font-weight:bold;
+    }
+
+    .card{
+      background:var(--home-card);
+      border:1px solid var(--home-border);
+      border-radius:var(--home-radius);
+      padding:12px;
+      margin-bottom:12px;
+    }
+
+    .button{
+      display:inline-block;
+      padding:10px 14px;
+      background:var(--home-primary);
+      border-radius:10px;
+      color:#fff;
+      text-decoration:none;
+      font-weight:bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-bar">
+    Latitude Shine 🚗✨
+  </div>
+
+  <div class="container">
+
+    <div class="hero-card">
+      <h2>Todo para la estética automotor</h2>
+      <p style="color:var(--home-text-soft);">
+        Productos profesionales, multimarcas y al mejor precio.
+      </p>
+      <a class="button" href="#">Ver productos</a>
+    </div>
+
+    <div class="oferta-box">
+      <div class="oferta-header">
+        🔥 Oferta del día
+      </div>
+      <div style="padding:12px;">
+        <h3>Kit de lavado completo</h3>
+        <p style="color:var(--home-text-soft);">Solo hoy a precio especial</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>Shampoos</h4>
+      <p style="color:var(--home-text-soft);">Alta espuma, PH neutro</p>
+    </div>
+
+    <div class="card">
+      <h4>Ceras</h4>
+      <p style="color:var(--home-text-soft);">Brillo y protección premium</p>
+    </div>
+
+    <div class="card">
+      <h4>Interior</h4>
+      <p style="color:var(--home-text-soft);">Limpieza y restauración</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
